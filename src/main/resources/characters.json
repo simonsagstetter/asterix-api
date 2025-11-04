@@ -1,0 +1,437 @@
+[
+  {
+    "name": "Asterix",
+    "description": "A clever and brave Gaulish warrior, small but fearless.",
+    "attributes": [
+      "brave",
+      "strategic",
+      "strong"
+    ],
+    "age": 35,
+    "nationality": "Gaul",
+    "occupation": "Warrior",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": true
+  },
+  {
+    "name": "Obelix",
+    "description": "Asterix’s best friend, menhir-deliveryman with permanent super strength after falling into the magic potion.",
+    "attributes": [
+      "super strength",
+      "loyal",
+      "hungry"
+    ],
+    "age": 36,
+    "nationality": "Gaul",
+    "occupation": "Menhir deliveryman",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": true
+  },
+  {
+    "name": "Dogmatix",
+    "description": "The small Gaulish dog, loyal to Obelix and Asterix; loves trees and is perhaps the only ‘canine ecologist’.",
+    "attributes": [
+      "dog",
+      "loyal",
+      "ecologist"
+    ],
+    "age": 5,
+    "nationality": "Dog",
+    "occupation": "Pet",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Getafix",
+    "description": "The village druid, brews the magic potion that gives the Gauls their strength.",
+    "attributes": [
+      "druid",
+      "wise",
+      "potion brewer"
+    ],
+    "age": 70,
+    "nationality": "Gaul",
+    "occupation": "Druid",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Vitalstatistix",
+    "description": "Chief of the Gaulish village; carried around on a shield by his shield-bearers.",
+    "attributes": [
+      "chief",
+      "leader",
+      "food lover"
+    ],
+    "age": 55,
+    "nationality": "Gaul",
+    "occupation": "Village Chief",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Impedimenta",
+    "description": "The chief’s wife; ambitious, strong-willed and concerned with status.",
+    "attributes": [
+      "ambitious",
+      "influential",
+      "outspoken"
+    ],
+    "age": 50,
+    "nationality": "Gaul",
+    "occupation": "Chief’s wife",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Cacofonix",
+    "description": "The village bard whose singing is notoriously terrible and leads to punishment (e.g., being tied to a tree).",
+    "attributes": [
+      "bard",
+      "bad singer",
+      "entertainer"
+    ],
+    "age": 40,
+    "nationality": "Gaul",
+    "occupation": "Bard",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Fulliautomatix",
+    "description": "The village blacksmith; often engages in comic fights with the fishmonger Unhygienix.",
+    "attributes": [
+      "blacksmith",
+      "strong",
+      "hot-tempered"
+    ],
+    "age": 45,
+    "nationality": "Gaul",
+    "occupation": "Blacksmith",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Unhygienix",
+    "description": "The village fishmonger; often uses stale fish as ammunition in fights with Fulliautomatix.",
+    "attributes": [
+      "fishmonger",
+      "comic relief",
+      "argumentative"
+    ],
+    "age": 42,
+    "nationality": "Gaul",
+    "occupation": "Fishmonger",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Bacteria",
+    "description": "Wife of Unhygienix, known for her gossip and sharp tongue.",
+    "attributes": [
+      "talkative",
+      "energetic",
+      "witty"
+    ],
+    "age": 40,
+    "nationality": "Gaul",
+    "occupation": "Fishmonger’s wife",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Geriatrix",
+    "description": "The village elder; older Gaul, complains about youth and relies on his wife.",
+    "attributes": [
+      "elder",
+      "traditionalist",
+      "grumpy"
+    ],
+    "age": 75,
+    "nationality": "Gaul",
+    "occupation": "Elder",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Mrs. Geriatrix",
+    "description": "The much younger wife of Geriatrix, who keeps him in check.",
+    "attributes": [
+      "patient",
+      "clever",
+      "good-natured"
+    ],
+    "age": 35,
+    "nationality": "Gaul",
+    "occupation": "Elder’s wife",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Julius Caesar",
+    "description": "Roman general and statesman; the main antagonist of the Gauls’ resistance.",
+    "attributes": [
+      "roman general",
+      "strategist",
+      "ambitious"
+    ],
+    "age": 52,
+    "nationality": "Roman",
+    "occupation": "General/Dictator",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Rome",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Brutus",
+    "description": "Adopted son of Caesar; appears in various volumes plotting against his father.",
+    "attributes": [
+      "plotter",
+      "jealous",
+      "cowardly"
+    ],
+    "age": 30,
+    "nationality": "Roman",
+    "occupation": "Roman noble",
+    "firstAppearance": "Asterix and Son",
+    "village": "Rome",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Cleopatra",
+    "description": "Queen of Egypt; appears in adventures where Gauls travel to Egypt and build grand structures.",
+    "attributes": [
+      "queen",
+      "egyptian",
+      "elegant"
+    ],
+    "age": 28,
+    "nationality": "Egyptian",
+    "occupation": "Queen",
+    "firstAppearance": "Asterix and Cleopatra",
+    "village": "Alexandria",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Crismus Bonus",
+    "description": "A Roman centurion constantly frustrated by the indomitable Gauls.",
+    "attributes": [
+      "centurion",
+      "strict",
+      "antagonist"
+    ],
+    "age": 40,
+    "nationality": "Roman",
+    "occupation": "Centurion",
+    "firstAppearance": "Asterix the Gaul",
+    "village": "Rome",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Dubius Status",
+    "description": "A corrupt Roman official involved in shady dealings.",
+    "attributes": [
+      "bureaucrat",
+      "corrupt",
+      "sneaky"
+    ],
+    "age": 38,
+    "nationality": "Roman",
+    "occupation": "Official",
+    "firstAppearance": "Asterix and the Roman Agent",
+    "village": "Rome",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Lucius Detritus",
+    "description": "A manipulative Roman known for his skill at sowing discord.",
+    "attributes": [
+      "schemer",
+      "manipulative",
+      "clever"
+    ],
+    "age": 41,
+    "nationality": "Roman",
+    "occupation": "Spy/Agent",
+    "firstAppearance": "Asterix and the Roman Agent",
+    "village": "Rome",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Instantmix",
+    "description": "A druid rival of Getafix who experiments with strange potions.",
+    "attributes": [
+      "druid",
+      "rival",
+      "eccentric"
+    ],
+    "age": 68,
+    "nationality": "Gaul",
+    "occupation": "Druid",
+    "firstAppearance": "Asterix the Gladiator",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Justforkix",
+    "description": "A young Gaul visiting from Lutetia, obsessed with fashion and city life.",
+    "attributes": [
+      "youth",
+      "stylish",
+      "naive"
+    ],
+    "age": 20,
+    "nationality": "Gaul",
+    "occupation": "Visitor",
+    "firstAppearance": "Asterix and the Normans",
+    "village": "Lutetia",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Falbala",
+    "description": "A beautiful young Gaulish woman admired by all the men in the village.",
+    "attributes": [
+      "beautiful",
+      "kind",
+      "gentle"
+    ],
+    "age": 22,
+    "nationality": "Gaul",
+    "occupation": "Village girl",
+    "firstAppearance": "Asterix and the Normans",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Tragicomix",
+    "description": "Falbala’s handsome fiancé, a gallant warrior.",
+    "attributes": [
+      "handsome",
+      "brave",
+      "warrior"
+    ],
+    "age": 24,
+    "nationality": "Gaul",
+    "occupation": "Warrior",
+    "firstAppearance": "Asterix and the Normans",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Oceanix",
+    "description": "A fisherman who often helps Unhygienix at sea.",
+    "attributes": [
+      "fisherman",
+      "brave",
+      "loyal"
+    ],
+    "age": 39,
+    "nationality": "Gaul",
+    "occupation": "Fisherman",
+    "firstAppearance": "Asterix in Spain",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Cartographix",
+    "description": "A Gaul who creates detailed maps of the region.",
+    "attributes": [
+      "cartographer",
+      "intelligent",
+      "creative"
+    ],
+    "age": 33,
+    "nationality": "Gaul",
+    "occupation": "Cartographer",
+    "firstAppearance": "Asterix the Legionary",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Pneumatix",
+    "description": "A courier who delivers messages swiftly between villages.",
+    "attributes": [
+      "messenger",
+      "fast",
+      "resourceful"
+    ],
+    "age": 29,
+    "nationality": "Gaul",
+    "occupation": "Courier",
+    "firstAppearance": "Asterix the Gladiator",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Ecotourix",
+    "description": "A Gaul fascinated by foreign lands and customs.",
+    "attributes": [
+      "traveler",
+      "curious",
+      "adventurous"
+    ],
+    "age": 32,
+    "nationality": "Gaul",
+    "occupation": "Traveler",
+    "firstAppearance": "Asterix and the Great Crossing",
+    "village": "Armorican Village",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Orthopaedix",
+    "description": "An innkeeper who once challenged Vitalstatistix for leadership.",
+    "attributes": [
+      "innkeeper",
+      "ambitious",
+      "competitive"
+    ],
+    "age": 50,
+    "nationality": "Gaul",
+    "occupation": "Innkeeper",
+    "firstAppearance": "Asterix and Caesar’s Gift",
+    "village": "Arausio",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Angine",
+    "description": "Orthopaedix’s strong-willed wife who pushes her husband to seek more status.",
+    "attributes": [
+      "assertive",
+      "ambitious",
+      "pragmatic"
+    ],
+    "age": 48,
+    "nationality": "Gaul",
+    "occupation": "Innkeeper’s wife",
+    "firstAppearance": "Asterix and Caesar’s Gift",
+    "village": "Arausio",
+    "isMainCharacter": false
+  },
+  {
+    "name": "Ompa",
+    "description": "A young slave freed by Asterix and Obelix in Egypt.",
+    "attributes": [
+      "freed slave",
+      "loyal",
+      "hardworking"
+    ],
+    "age": 25,
+    "nationality": "Egyptian",
+    "occupation": "Former slave",
+    "firstAppearance": "Asterix and Cleopatra",
+    "village": "Alexandria",
+    "isMainCharacter": false
+  }
+]
