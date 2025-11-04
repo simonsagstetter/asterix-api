@@ -93,8 +93,6 @@ public class CharacterService {
                         .is( s )
         ) );
 
-        System.out.println();
-
         return this.characterRepository
                 .query( query )
                 .orElseThrow( CharacterNotFoundException::new );
