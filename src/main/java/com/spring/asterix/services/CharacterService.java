@@ -1,5 +1,7 @@
 package com.spring.asterix.services;
 
+import com.spring.asterix.components.CharacterMapper;
+import com.spring.asterix.dtos.CharacterIdDTO;
 import com.spring.asterix.exceptions.CharacterNotFoundException;
 import com.spring.asterix.models.Character;
 import com.spring.asterix.repositories.CharacterRepository;
@@ -14,16 +16,18 @@ import java.util.Optional;
 @Service
 public class CharacterService {
     private final CharacterRepository characterRepository;
+    private final CharacterMapper characterMapper;
 
-    public CharacterService( CharacterRepository characterRepository ) {
+    public CharacterService( CharacterRepository characterRepository, CharacterMapper characterMapper ) {
         this.characterRepository = characterRepository;
+        this.characterMapper = characterMapper;
     }
 
-    public Character createCharacter( Character character ) {
+    public CharacterIdDTO createCharacter( CharacterIdDTO character ) {
         return this.characterRepository.insert( character );
     }
 
-    public List<Character> createManyCharacters( List<Character> characters ) {
+    public List<CharacterIdDTO> createManyCharacters( List<CharacterIdDTO> characters ) {
         return this.characterRepository.insert( characters );
     }
 
@@ -98,14 +102,24 @@ public class CharacterService {
                 .orElseThrow( CharacterNotFoundException::new );
     }
 
-    public Character updateCharacter( String characterId, Character character ) throws CharacterNotFoundException {
+    public CharacterIdDTO updateCharacter( String characterId, CharacterIdDTO character ) throws CharacterNotFoundException {
         Character oldCharacter = this.getCharacterById( characterId );
 
-        return this.characterRepository
-                .save( character.withId( oldCharacter.id() ) );
+        Character updatedCharacter = this.characterRepository.save( oldCharacter
+                .withName( character.name() )
+                .withAttributes( character.attributes() )
+                .withAge( character.age() )
+                .withNationality( character.nationality() )
+                .withOccupation( character.occupation() )
+                .withVillage( character.village() ) );
+
+
+        return characterMapper.toCharacterIdDTO( updatedCharacter );
     }
 
-    public void deleteCharacter( String characterId ) {
-        this.characterRepository.deleteById( characterId );
+    public boolean deleteCharacter( String characterId ) throws CharacterNotFoundException {
+        Character character = this.getCharacterById( characterId );
+        this.characterRepository.deleteById( character.id() );
+        return true;
     }
 }

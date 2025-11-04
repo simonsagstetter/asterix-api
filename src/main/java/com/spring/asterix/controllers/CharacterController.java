@@ -1,5 +1,6 @@
 package com.spring.asterix.controllers;
 
+import com.spring.asterix.dtos.CharacterIdDTO;
 import com.spring.asterix.exceptions.CharacterNotFoundException;
 import com.spring.asterix.models.Character;
 import com.spring.asterix.services.CharacterService;
@@ -22,13 +23,13 @@ public class CharacterController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Character create( @RequestBody Character character ) {
+    public CharacterIdDTO create( @RequestBody CharacterIdDTO character ) {
         return this.characterService.createCharacter( character );
     }
 
     @PostMapping("/bulk")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<Character> createMany( @RequestBody List<Character> characters ) {
+    public List<CharacterIdDTO> createMany( @RequestBody List<CharacterIdDTO> characters ) {
         return this.characterService.createManyCharacters( characters );
     }
 
@@ -70,7 +71,7 @@ public class CharacterController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Character update( @PathVariable String id, @RequestBody Character character ) {
+    public CharacterIdDTO update( @PathVariable String id, @RequestBody CharacterIdDTO character ) {
         try {
             return this.characterService.updateCharacter( id, character );
         } catch ( CharacterNotFoundException e ) {
@@ -81,7 +82,12 @@ public class CharacterController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById( @PathVariable String id ) {
-        this.characterService.deleteCharacter( id );
+    public boolean deleteById( @PathVariable String id ) {
+        try {
+            return this.characterService.deleteCharacter( id );
+        } catch ( CharacterNotFoundException e ) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, e.getMessage(), e );
+        }
     }
 }
