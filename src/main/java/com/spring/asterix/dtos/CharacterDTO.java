@@ -17,17 +17,4 @@ public record CharacterDTO( @NonNull String name,
                             @NonNull String firstAppearance,
                             @NonNull String village,
                             @NonNull Boolean isMainCharacter ) {
-
-    public CharacterDTO copy() {
-        return new CharacterDTO(
-                this.name,
-                this.description,
-                this.attributes,
-                this.age, this.nationality,
-                this.occupation,
-                this.firstAppearance,
-                this.village,
-                this.isMainCharacter
-        );
-    }
 }

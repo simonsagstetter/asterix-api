@@ -6,8 +6,8 @@ import com.spring.asterix.exceptions.CharacterNotFoundException;
 import com.spring.asterix.models.Character;
 import com.spring.asterix.services.CharacterService;
 
-import org.apache.tomcat.util.http.parser.AcceptEncoding;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -15,7 +15,15 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/characters")
+@RequestMapping(
+        path = "/api/v1/characters",
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE,
+        headers = {
+                "Content-Type=" + MediaType.APPLICATION_JSON_VALUE,
+                "Accept=" + MediaType.APPLICATION_JSON_VALUE
+        }
+)
 public class CharacterController {
     private final CharacterService characterService;
 
@@ -25,13 +33,13 @@ public class CharacterController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public CharacterDTO create( @RequestBody CharacterDTO character ) {
+    public Character create( @RequestBody CharacterDTO character ) {
         return this.characterService.createCharacter( character );
     }
 
     @PostMapping("/bulk")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<CharacterDTO> createMany( @RequestBody List<CharacterDTO> characters ) {
+    public List<Character> createMany( @RequestBody List<CharacterDTO> characters ) {
         return this.characterService.createManyCharacters( characters );
     }
 
@@ -82,7 +90,7 @@ public class CharacterController {
         }
     }
 
-    @CrossOrigin
+    @CrossOrigin("http://localhost")
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public CharacterDTO patch( @PathVariable String id, @RequestBody CharacterPatchDTO character ) {
@@ -94,18 +102,7 @@ public class CharacterController {
         }
     }
 
-    @CrossOrigin
-    @PatchMapping("/{id}/attributes")
-    @ResponseStatus(HttpStatus.OK)
-    public CharacterDTO patch( @PathVariable String id, @RequestBody List<String> attributes ) {
-        try {
-            return this.characterService.partialUpdateCharacter( id, attributes );
-        } catch ( CharacterNotFoundException e ) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, e.getMessage(), e );
-        }
-    }
-
+    @CrossOrigin("http://localhost")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteById( @PathVariable String id ) {

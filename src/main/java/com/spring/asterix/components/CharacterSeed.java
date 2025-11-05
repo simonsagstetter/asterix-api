@@ -2,9 +2,11 @@ package com.spring.asterix.components;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spring.asterix.models.Character;
+import com.spring.asterix.dtos.CharacterDTO;
 import com.spring.asterix.repositories.CharacterRepository;
+import com.spring.asterix.services.CharacterService;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
@@ -13,13 +15,21 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 @Component
+@ConditionalOnProperty(
+        prefix = "app",
+        name = "seeder.enabled",
+        havingValue = "true",
+        matchIfMissing = true
+)
 public class CharacterSeed implements CommandLineRunner {
     private final CharacterRepository characterRepository;
     private final ObjectMapper objectMapper;
+    private final CharacterService characterService;
 
-    public CharacterSeed( CharacterRepository characterRepository, ObjectMapper objectMapper ) {
+    public CharacterSeed( CharacterRepository characterRepository, ObjectMapper objectMapper, CharacterService characterService ) {
         this.characterRepository = characterRepository;
         this.objectMapper = objectMapper;
+        this.characterService = characterService;
     }
 
     @Override
@@ -34,17 +44,16 @@ public class CharacterSeed implements CommandLineRunner {
 
         ClassPathResource resource = new ClassPathResource( "characters.json" );
         try ( InputStream inputStream = resource.getInputStream() ) {
-            List<Character> characters = objectMapper.readValue( inputStream, new TypeReference<List<Character>>() {
+            List<CharacterDTO> characters = objectMapper.readValue( inputStream, new TypeReference<List<CharacterDTO>>() {
                 @Override
                 public Type getType() {
                     return super.getType();
                 }
             } );
-            this.characterRepository.insert( characters );
+            this.characterService.createManyCharacters( characters );
             System.out.println( "🌱 Seeded " + characters.size() + " characters into MongoDB." );
         } catch ( Exception e ) {
             System.err.println( "❌ Failed to seed characters: " + e.getMessage() );
         }
-
     }
 }

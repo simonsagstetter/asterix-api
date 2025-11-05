@@ -5,6 +5,7 @@ import lombok.With;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.util.List;
 
 @With
@@ -20,21 +21,8 @@ public record Character(
         String occupation,
         String firstAppearance,
         String village,
-        boolean isMainCharacter
+        boolean isMainCharacter,
+        Instant createdAt,
+        Instant updatedAt
 ) {
-
-    public Character copy() {
-        return new Character(
-                this.id,
-                this.name,
-                this.description,
-                this.attributes,
-                this.age, this.nationality,
-                this.occupation,
-                this.firstAppearance,
-                this.village,
-                this.isMainCharacter
-        );
-    }
-
 }

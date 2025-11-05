@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,18 +19,36 @@ import java.util.Optional;
 public class CharacterService {
     private final CharacterRepository characterRepository;
     private final CharacterMapper characterMapper;
+    private final IdService idService;
+    private final AuditService auditService;
 
-    public CharacterService( CharacterRepository characterRepository, CharacterMapper characterMapper ) {
+    public CharacterService( CharacterRepository characterRepository, CharacterMapper characterMapper, IdService idService, AuditService auditService ) {
         this.characterRepository = characterRepository;
         this.characterMapper = characterMapper;
+        this.idService = idService;
+        this.auditService = auditService;
     }
 
-    public CharacterDTO createCharacter( CharacterDTO character ) {
-        return this.characterRepository.insert( character );
+    public Character createCharacter( CharacterDTO character ) {
+        String newRecordId = idService.generateIdFor( Character.class.getSimpleName() );
+        Instant createdAt = auditService.getCurrentTimestamp();
+        return this.characterRepository.insert( characterMapper.toCharacter( newRecordId, createdAt, createdAt, character ) );
     }
 
-    public List<CharacterDTO> createManyCharacters( List<CharacterDTO> characters ) {
-        return this.characterRepository.insert( characters );
+    public List<Character> createManyCharacters( List<CharacterDTO> characters ) {
+        List<Character> characterList = characters
+                .stream()
+                .map( characterDTO -> {
+                            Instant createdAt = auditService.getCurrentTimestamp();
+                            return characterMapper.toCharacter(
+                                    idService.generateIdFor( Character.class.getSimpleName() ),
+                                    createdAt,
+                                    createdAt,
+                                    characterDTO );
+                        }
+                )
+                .toList();
+        return this.characterRepository.insert( characterList );
     }
 
     public List<Character> findAllCharacters() {
@@ -107,7 +126,7 @@ public class CharacterService {
         Character oldCharacter = this.getCharacterById( characterId );
 
         Character updatedCharacter = this.characterRepository.save(
-                characterMapper.toCharacter( oldCharacter.id(), character )
+                characterMapper.toCharacter( oldCharacter.id(), oldCharacter.createdAt(), auditService.getCurrentTimestamp(), character )
         );
 
         return characterMapper.toCharacterDTO( updatedCharacter );
@@ -116,11 +135,9 @@ public class CharacterService {
     public CharacterDTO partialUpdateCharacter( String characterId, CharacterPatchDTO character ) throws CharacterNotFoundException {
         Character oldCharacter = this.getCharacterById( characterId );
 
-        System.out.println( character );
-
         Character updatedCharacter = Character.builder()
                 .id( oldCharacter.id() )
-                .attributes( oldCharacter.attributes() )
+                .attributes( character.attributes() != null && !character.attributes().isEmpty() ? character.attributes() : oldCharacter.attributes() )
                 .name( character.name() != null ? character.name() : oldCharacter.name() )
                 .description( character.description() != null ? character.description() : oldCharacter.description() )
                 .age( character.age() != null ? character.age() : oldCharacter.age() )
@@ -129,18 +146,9 @@ public class CharacterService {
                 .firstAppearance( character.firstAppearance() != null ? character.firstAppearance() : oldCharacter.firstAppearance() )
                 .village( character.village() != null ? character.village() : oldCharacter.village() )
                 .isMainCharacter( character.isMainCharacter() != null ? character.isMainCharacter() : oldCharacter.isMainCharacter() )
-
+                .createdAt( oldCharacter.createdAt() )
+                .updatedAt( auditService.getCurrentTimestamp() )
                 .build();
-
-        return characterMapper.toCharacterDTO( this.characterRepository.save( updatedCharacter ) );
-    }
-
-    public CharacterDTO partialUpdateCharacter( String characterId, List<String> attributes ) throws CharacterNotFoundException {
-        Character oldCharacter = this.getCharacterById( characterId );
-
-
-        Character updatedCharacter = oldCharacter.copy()
-                .withAttributes( attributes );
 
         return characterMapper.toCharacterDTO( this.characterRepository.save( updatedCharacter ) );
     }

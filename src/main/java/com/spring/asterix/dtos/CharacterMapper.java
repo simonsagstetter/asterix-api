@@ -3,6 +3,8 @@ package com.spring.asterix.dtos;
 import com.spring.asterix.models.Character;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
+
 @Component
 public class CharacterMapper {
 
@@ -20,7 +22,7 @@ public class CharacterMapper {
                 .build();
     }
 
-    public Character toCharacter( String id, CharacterDTO characterDTO ) {
+    public Character toCharacter( String id, Instant createdAt, Instant updatedAt, CharacterDTO characterDTO ) {
         return Character.builder()
                 .id( id )
                 .name( characterDTO.name() )
@@ -32,6 +34,8 @@ public class CharacterMapper {
                 .firstAppearance( characterDTO.firstAppearance() )
                 .village( characterDTO.village() )
                 .isMainCharacter( characterDTO.isMainCharacter() )
+                .createdAt( createdAt )
+                .updatedAt( updatedAt )
                 .build();
     }
 }

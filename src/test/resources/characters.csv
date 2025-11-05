@@ -1,0 +1,30 @@
+name,description,attributes,age,nationality,occupation,firstAppearance,village,isMainCharacter
+Asterix,"A clever and brave Gaulish warrior, small but fearless.","brave, strategic, strong",35,Gaul,Warrior,Asterix the Gaul,Armorican Village,True
+Obelix,"Asterix’s best friend, menhir-deliveryman with permanent super strength after falling into the magic potion.","super strength, loyal, hungry",36,Gaul,Menhir deliveryman,Asterix the Gaul,Armorican Village,True
+Dogmatix,"The small Gaulish dog, loyal to Obelix and Asterix; loves trees and is perhaps the only ‘canine ecologist’.","dog, loyal, ecologist",5,Dog,Pet,Asterix the Gaul,Armorican Village,False
+Getafix,"The village druid, brews the magic potion that gives the Gauls their strength.","druid, wise, potion brewer",70,Gaul,Druid,Asterix the Gaul,Armorican Village,False
+Vitalstatistix,Chief of the Gaulish village; carried around on a shield by his shield-bearers.,"chief, leader, food lover",55,Gaul,Village Chief,Asterix the Gaul,Armorican Village,False
+Impedimenta,"The chief’s wife; ambitious, strong-willed and concerned with status.","ambitious, influential, outspoken",50,Gaul,Chief’s wife,Asterix the Gaul,Armorican Village,False
+Cacofonix,"The village bard whose singing is notoriously terrible and leads to punishment (e.g., being tied to a tree).","bard, bad singer, entertainer",40,Gaul,Bard,Asterix the Gaul,Armorican Village,False
+Fulliautomatix,The village blacksmith; often engages in comic fights with the fishmonger Unhygienix.,"blacksmith, strong, hot-tempered",45,Gaul,Blacksmith,Asterix the Gaul,Armorican Village,False
+Unhygienix,The village fishmonger; often uses stale fish as ammunition in fights with Fulliautomatix.,"fishmonger, comic relief, argumentative",42,Gaul,Fishmonger,Asterix the Gaul,Armorican Village,False
+Bacteria,"Wife of Unhygienix, known for her gossip and sharp tongue.","talkative, energetic, witty",40,Gaul,Fishmonger’s wife,Asterix the Gaul,Armorican Village,False
+Geriatrix,"The village elder; older Gaul, complains about youth and relies on his wife.","elder, traditionalist, grumpy",75,Gaul,Elder,Asterix the Gaul,Armorican Village,False
+Mrs. Geriatrix,"The much younger wife of Geriatrix, who keeps him in check.","patient, clever, good-natured",35,Gaul,Elder’s wife,Asterix the Gaul,Armorican Village,False
+Julius Caesar,Roman general and statesman; the main antagonist of the Gauls’ resistance.,"roman general, strategist, ambitious",52,Roman,General/Dictator,Asterix the Gaul,Rome,False
+Brutus,Adopted son of Caesar; appears in various volumes plotting against his father.,"plotter, jealous, cowardly",30,Roman,Roman noble,Asterix and Son,Rome,False
+Cleopatra,Queen of Egypt; appears in adventures where Gauls travel to Egypt and build grand structures.,"queen, egyptian, elegant",28,Egyptian,Queen,Asterix and Cleopatra,Alexandria,False
+Crismus Bonus,A Roman centurion constantly frustrated by the indomitable Gauls.,"centurion, strict, antagonist",40,Roman,Centurion,Asterix the Gaul,Rome,False
+Dubius Status,A corrupt Roman official involved in shady dealings.,"bureaucrat, corrupt, sneaky",38,Roman,Official,Asterix and the Roman Agent,Rome,False
+Lucius Detritus,A manipulative Roman known for his skill at sowing discord.,"schemer, manipulative, clever",41,Roman,Spy/Agent,Asterix and the Roman Agent,Rome,False
+Instantmix,A druid rival of Getafix who experiments with strange potions.,"druid, rival, eccentric",68,Gaul,Druid,Asterix the Gladiator,Armorican Village,False
+Justforkix,"A young Gaul visiting from Lutetia, obsessed with fashion and city life.","youth, stylish, naive",20,Gaul,Visitor,Asterix and the Normans,Lutetia,False
+Falbala,A beautiful young Gaulish woman admired by all the men in the village.,"beautiful, kind, gentle",22,Gaul,Village girl,Asterix and the Normans,Armorican Village,False
+Tragicomix,"Falbala’s handsome fiancé, a gallant warrior.","handsome, brave, warrior",24,Gaul,Warrior,Asterix and the Normans,Armorican Village,False
+Oceanix,A fisherman who often helps Unhygienix at sea.,"fisherman, brave, loyal",39,Gaul,Fisherman,Asterix in Spain,Armorican Village,False
+Cartographix,A Gaul who creates detailed maps of the region.,"cartographer, intelligent, creative",33,Gaul,Cartographer,Asterix the Legionary,Armorican Village,False
+Pneumatix,A courier who delivers messages swiftly between villages.,"messenger, fast, resourceful",29,Gaul,Courier,Asterix the Gladiator,Armorican Village,False
+Ecotourix,A Gaul fascinated by foreign lands and customs.,"traveler, curious, adventurous",32,Gaul,Traveler,Asterix and the Great Crossing,Armorican Village,False
+Orthopaedix,An innkeeper who once challenged Vitalstatistix for leadership.,"innkeeper, ambitious, competitive",50,Gaul,Innkeeper,Asterix and Caesar’s Gift,Arausio,False
+Angine,Orthopaedix’s strong-willed wife who pushes her husband to seek more status.,"assertive, ambitious, pragmatic",48,Gaul,Innkeeper’s wife,Asterix and Caesar’s Gift,Arausio,False
+Ompa,A young slave freed by Asterix and Obelix in Egypt.,"freed slave, loyal, hardworking",25,Egyptian,Former slave,Asterix and Cleopatra,Alexandria,False
