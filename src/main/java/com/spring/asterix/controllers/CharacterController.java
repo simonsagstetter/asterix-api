@@ -43,13 +43,13 @@ public class CharacterController {
         return this.characterService.createManyCharacters( characters );
     }
 
-    @GetMapping("")
+    @GetMapping(path = "", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<Character> getAll() {
         return this.characterService.findAllCharacters();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public Character getById( @PathVariable String id ) {
         try {
@@ -61,7 +61,7 @@ public class CharacterController {
         }
     }
 
-    @GetMapping("/search")
+    @GetMapping(path = "/search", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<Character> search( @RequestParam Optional<String> name,
                                    @RequestParam Optional<String> attribute,

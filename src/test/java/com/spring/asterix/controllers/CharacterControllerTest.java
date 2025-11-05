@@ -59,9 +59,7 @@ class CharacterControllerTest {
 
         //WHEN
         mockMvc.perform( MockMvcRequestBuilders
-                        .get( "/api/v1/characters" )
-                        .accept( MediaType.APPLICATION_JSON )
-                        .contentType( MediaType.APPLICATION_JSON ) )
+                        .get( "/api/v1/characters" ) )
                 //THEN
                 .andExpect( MockMvcResultMatchers.status().isOk() )
                 .andExpect( MockMvcResultMatchers.content().contentType( MediaType.APPLICATION_JSON ) )
