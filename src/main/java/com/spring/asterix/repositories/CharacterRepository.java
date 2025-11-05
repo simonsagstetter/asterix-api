@@ -1,6 +1,6 @@
 package com.spring.asterix.repositories;
 
-import com.spring.asterix.dtos.CharacterIdDTO;
+import com.spring.asterix.dtos.CharacterDTO;
 import com.spring.asterix.models.Character;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -15,8 +15,8 @@ import java.util.Optional;
 public interface CharacterRepository extends MongoRepository<Character, String>, CharacterQueryRepository {
     Optional<Character> getCharacterById( String id );
 
-    CharacterIdDTO insert( CharacterIdDTO character );
+    CharacterDTO insert( CharacterDTO character );
 
-    List<CharacterIdDTO> insert( List<CharacterIdDTO> character );
+    List<CharacterDTO> insert( List<CharacterDTO> character );
 
 }

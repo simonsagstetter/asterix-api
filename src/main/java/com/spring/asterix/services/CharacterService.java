@@ -1,7 +1,8 @@
 package com.spring.asterix.services;
 
-import com.spring.asterix.components.CharacterMapper;
-import com.spring.asterix.dtos.CharacterIdDTO;
+import com.spring.asterix.dtos.CharacterMapper;
+import com.spring.asterix.dtos.CharacterDTO;
+import com.spring.asterix.dtos.CharacterPatchDTO;
 import com.spring.asterix.exceptions.CharacterNotFoundException;
 import com.spring.asterix.models.Character;
 import com.spring.asterix.repositories.CharacterRepository;
@@ -23,11 +24,11 @@ public class CharacterService {
         this.characterMapper = characterMapper;
     }
 
-    public CharacterIdDTO createCharacter( CharacterIdDTO character ) {
+    public CharacterDTO createCharacter( CharacterDTO character ) {
         return this.characterRepository.insert( character );
     }
 
-    public List<CharacterIdDTO> createManyCharacters( List<CharacterIdDTO> characters ) {
+    public List<CharacterDTO> createManyCharacters( List<CharacterDTO> characters ) {
         return this.characterRepository.insert( characters );
     }
 
@@ -102,19 +103,46 @@ public class CharacterService {
                 .orElseThrow( CharacterNotFoundException::new );
     }
 
-    public CharacterIdDTO updateCharacter( String characterId, CharacterIdDTO character ) throws CharacterNotFoundException {
+    public CharacterDTO updateCharacter( String characterId, CharacterDTO character ) throws CharacterNotFoundException {
         Character oldCharacter = this.getCharacterById( characterId );
 
-        Character updatedCharacter = this.characterRepository.save( oldCharacter
-                .withName( character.name() )
-                .withAttributes( character.attributes() )
-                .withAge( character.age() )
-                .withNationality( character.nationality() )
-                .withOccupation( character.occupation() )
-                .withVillage( character.village() ) );
+        Character updatedCharacter = this.characterRepository.save(
+                characterMapper.toCharacter( oldCharacter.id(), character )
+        );
+
+        return characterMapper.toCharacterDTO( updatedCharacter );
+    }
+
+    public CharacterDTO partialUpdateCharacter( String characterId, CharacterPatchDTO character ) throws CharacterNotFoundException {
+        Character oldCharacter = this.getCharacterById( characterId );
+
+        System.out.println( character );
+
+        Character updatedCharacter = Character.builder()
+                .id( oldCharacter.id() )
+                .attributes( oldCharacter.attributes() )
+                .name( character.name() != null ? character.name() : oldCharacter.name() )
+                .description( character.description() != null ? character.description() : oldCharacter.description() )
+                .age( character.age() != null ? character.age() : oldCharacter.age() )
+                .nationality( character.nationality() != null ? character.nationality() : oldCharacter.nationality() )
+                .occupation( character.occupation() != null ? character.occupation() : oldCharacter.occupation() )
+                .firstAppearance( character.firstAppearance() != null ? character.firstAppearance() : oldCharacter.firstAppearance() )
+                .village( character.village() != null ? character.village() : oldCharacter.village() )
+                .isMainCharacter( character.isMainCharacter() != null ? character.isMainCharacter() : oldCharacter.isMainCharacter() )
+
+                .build();
+
+        return characterMapper.toCharacterDTO( this.characterRepository.save( updatedCharacter ) );
+    }
+
+    public CharacterDTO partialUpdateCharacter( String characterId, List<String> attributes ) throws CharacterNotFoundException {
+        Character oldCharacter = this.getCharacterById( characterId );
 
 
-        return characterMapper.toCharacterIdDTO( updatedCharacter );
+        Character updatedCharacter = oldCharacter.copy()
+                .withAttributes( attributes );
+
+        return characterMapper.toCharacterDTO( this.characterRepository.save( updatedCharacter ) );
     }
 
     public boolean deleteCharacter( String characterId ) throws CharacterNotFoundException {

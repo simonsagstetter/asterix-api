@@ -1,10 +1,12 @@
 package com.spring.asterix.controllers;
 
-import com.spring.asterix.dtos.CharacterIdDTO;
+import com.spring.asterix.dtos.CharacterDTO;
+import com.spring.asterix.dtos.CharacterPatchDTO;
 import com.spring.asterix.exceptions.CharacterNotFoundException;
 import com.spring.asterix.models.Character;
 import com.spring.asterix.services.CharacterService;
 
+import org.apache.tomcat.util.http.parser.AcceptEncoding;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,13 +25,13 @@ public class CharacterController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public CharacterIdDTO create( @RequestBody CharacterIdDTO character ) {
+    public CharacterDTO create( @RequestBody CharacterDTO character ) {
         return this.characterService.createCharacter( character );
     }
 
     @PostMapping("/bulk")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<CharacterIdDTO> createMany( @RequestBody List<CharacterIdDTO> characters ) {
+    public List<CharacterDTO> createMany( @RequestBody List<CharacterDTO> characters ) {
         return this.characterService.createManyCharacters( characters );
     }
 
@@ -71,9 +73,33 @@ public class CharacterController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CharacterIdDTO update( @PathVariable String id, @RequestBody CharacterIdDTO character ) {
+    public CharacterDTO update( @PathVariable String id, @RequestBody CharacterDTO character ) {
         try {
             return this.characterService.updateCharacter( id, character );
+        } catch ( CharacterNotFoundException e ) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, e.getMessage(), e );
+        }
+    }
+
+    @CrossOrigin
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CharacterDTO patch( @PathVariable String id, @RequestBody CharacterPatchDTO character ) {
+        try {
+            return this.characterService.partialUpdateCharacter( id, character );
+        } catch ( CharacterNotFoundException e ) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, e.getMessage(), e );
+        }
+    }
+
+    @CrossOrigin
+    @PatchMapping("/{id}/attributes")
+    @ResponseStatus(HttpStatus.OK)
+    public CharacterDTO patch( @PathVariable String id, @RequestBody List<String> attributes ) {
+        try {
+            return this.characterService.partialUpdateCharacter( id, attributes );
         } catch ( CharacterNotFoundException e ) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, e.getMessage(), e );
